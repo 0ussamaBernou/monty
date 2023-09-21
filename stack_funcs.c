@@ -7,20 +7,12 @@
  * @line: unsigned value
  * return: void
  */
-void push(stack_t **head, int digit, __attribute__((unused)) unsigned int line)
+void push(stack_t **tmp, __attribute__((unused)) unsigned int line)
 {
 
-	stack_t *tmp = malloc(sizeof(stack_t));
-	if (!tmp)
-	{
-		free(tmp);
-		malloc_err();
-	}
-
-	tmp->n = digit;
-	tmp->next = *head;
-	tmp->prev = NULL;
-	*head = tmp;
+	(*tmp)->next = stack_h;
+	(*tmp)->prev = NULL;
+	stack_h = *tmp;
 }
 
 /**
