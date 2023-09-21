@@ -1,15 +1,13 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-<<<<<<< HEAD
-=======
 #define uint unsigned int
 
->>>>>>> e5221fee5d21afab3b1aa506b74ced0ea8287a09
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -21,15 +19,9 @@
  */
 typedef struct stack_s
 {
-<<<<<<< HEAD
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
-=======
 	int n;
 	struct stack_s *prev;
 	struct stack_s *next;
->>>>>>> e5221fee5d21afab3b1aa506b74ced0ea8287a09
 } stack_t;
 
 /**
@@ -42,11 +34,6 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-<<<<<<< HEAD
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;
-=======
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
@@ -60,16 +47,16 @@ void run_instuction(char *opcode, char *value, uint line_num);
 void exec(void *func, char *value, uint line_num);
 
 /* STACK FUNCS */
-void push(stack_t **head, uint);
-void pop(stack_t **head, uint);
-void show_stack(stack_t **head, uint);
-uint is_stack_empty(stack_t **head, uint);
-void show_top(stack_t **head, uint);
-void free_stack(stack_t **head);
+void push(uint);
+void pop(uint);
+void show_stack(uint);
+uint is_stack_empty(uint);
+void show_top(uint);
+void free_stack();
 
 /* QUEUE FUNCS */
-void enqueue(stack_t **head, uint);
-void dequeue(stack_t **head, uint);
+void enqueue(uint);
+void dequeue(uint);
 
 /* ERRORS */
 void malloc_err();
@@ -77,5 +64,6 @@ void usage_err();
 void open_err(char *filename);
 void invalid_op_err(uint line_num, char *opcode);
 
->>>>>>> e5221fee5d21afab3b1aa506b74ced0ea8287a09
+/* INSTRUCTIONS */
+
 #endif

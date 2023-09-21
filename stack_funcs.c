@@ -2,28 +2,26 @@
 
 /**
  * push - push new node
- * @stack_h: working stack node
  * @line: unsigned value
  * return: void
  */
 
-void push(stack_t *stack_h, unsigned int line)
+void push(uint line)
 {
-	stack_t *tmp = malloc(sizeof(stack_t));
-	unsigned int pos = 0;
+	uint pos = 0;
+
 	char *tok = strtok(NULL, " ");
 
+	stack_t *tmp = malloc(sizeof(stack_t));
 	if (!tmp)
-	{
 		malloc_err();
-	}
 
-	while (pos < strlen(tok) || *tok == "\n")
+	while (pos < strlen(tok) || *tok == '\n')
 	{
-		if (!isdigit(tok[i]))
+		if (!isdigit(tok[pos]))
 		{
 			fprintf(stderr, "L<line_number>: usage: push integer");
-			free(tmp1);
+			free(tmp);
 			exit(EXIT_FAILURE);
 		}
 		pos += 1;
@@ -36,17 +34,16 @@ void push(stack_t *stack_h, unsigned int line)
 
 /**
  * pop - delete stack
- * @stack_h: working stack
  * @line: uint value
  *
  * return: void
  */
 
-void pop(stack_t *stack_h, unsigned int line)
+void pop(uint line)
 {
 	stack_t *ptr = stack_h;
 
-	if (!is_stack_empty(ptr, line))
+	if (!is_stack_empty(line))
 		return;
 
 	while (ptr->next)
@@ -56,12 +53,11 @@ void pop(stack_t *stack_h, unsigned int line)
 
 /**
  * is_stack_empty - checks if stack empty
- * @stack_h:the head of the node
  * @line: non-negative value
  * Return: 1 or 0
  */
 
-unsigned int is_stack_empty(stack_t *stack_h, unsigned int line)
+uint is_stack_empty(uint line)
 {
 	if (!stack_h)
 		return (0);
@@ -70,13 +66,12 @@ unsigned int is_stack_empty(stack_t *stack_h, unsigned int line)
 
 /**
  * show_stack - prints out stack
- * @stack_h:stack head
  * @line:non-negative value
  *
  * return: void
  */
 
-void show_stack(stack_t *stack_h, unsigned int line)
+void show_stack(uint line)
 {
 	stack_t *tmp = stack_h;
 
@@ -89,13 +84,12 @@ void show_stack(stack_t *stack_h, unsigned int line)
 
 /**
  * free_stack - free stack
- * @stack_h: head of a stack
  * return: void
  */
 
-void free_stack(stack_t *stack_h)
+void free_stack()
 {
-	stack_t list;
+	stack_t *list;
 
 	while (stack_h)
 	{
