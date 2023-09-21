@@ -2,13 +2,14 @@
 
 /**
  * push - push new node
+ * @stack_h: working stack node
  * @line: unsigned value
  * return: void
  */
 
-void push(uint line)
+void push(stack_t **stack_h, unsigned int line)
 {
-	uint pos = 0;
+	unsigned int pos = 0;
 
 	char *tok = strtok(NULL, " ");
 
@@ -27,23 +28,24 @@ void push(uint line)
 		pos += 1;
 	}
 	tmp->n = atoi(tok);
-	tmp->next = stack_h;
+	tmp->next = *stack_h;
 	tmp->prev = NULL;
-	stack_h = tmp;
+	*stack_h = tmp;
 }
 
 /**
  * pop - delete stack
+ * @stack_h: working stack
  * @line: uint value
  *
  * return: void
  */
 
-void pop(uint line)
+void pop(stack_t **stack_h, unsigned int line)
 {
-	stack_t *ptr = stack_h;
+	stack_t *ptr = *stack_h;
 
-	if (!is_stack_empty(line))
+	if (!is_stack_empty(&ptr, line))
 		return;
 
 	while (ptr->next)
@@ -53,27 +55,29 @@ void pop(uint line)
 
 /**
  * is_stack_empty - checks if stack empty
+ * @stack_h:the head of the node
  * @line: non-negative value
  * Return: 1 or 0
  */
 
-uint is_stack_empty(uint line)
+unsigned int is_stack_empty(stack_t **stack_h, unsigned int line)
 {
-	if (!stack_h)
+	if (!*stack_h)
 		return (0);
 	return (1);
 }
 
 /**
  * show_stack - prints out stack
+ * @stack_h:stack head
  * @line:non-negative value
  *
  * return: void
  */
 
-void show_stack(uint line)
+void show_stack(stack_t **stack_h, unsigned int line)
 {
-	stack_t *tmp = stack_h;
+	stack_t *tmp = *stack_h;
 
 	while (tmp)
 	{
@@ -84,17 +88,18 @@ void show_stack(uint line)
 
 /**
  * free_stack - free stack
+ * @stack_h: head of a stack
  * return: void
  */
 
-void free_stack()
+void free_stack(stack_t **stack_h)
 {
 	stack_t *list;
 
 	while (stack_h)
 	{
-		list = stack_h;
-		stack_h = stack_h->next;
+		list = *stack_h;
+		*stack_h = (*stack_h)->next;
 		free(list);
 	}
 }

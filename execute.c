@@ -23,4 +23,10 @@ void run_instuction(char *opcode, char *value, uint line_num)
 
 	invalid_op_err(line_num, opcode);
 }
-void exec(void *func, char *value, uint line_num) { return; }
+void exec(void (*func)(stack_t **, uint), char *value, uint line_num)
+{
+	int digit;
+	digit = atoi(value);
+	func(&stack_h, line_num);
+	return;
+}

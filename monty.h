@@ -43,27 +43,27 @@ extern stack_t *stack_h;
 /* File Funcs */
 void read_file(char *filename);
 void parseline(char *linebuf, uint line_num);
+
+/* Interpreting Funcs */
 void run_instuction(char *opcode, char *value, uint line_num);
-void exec(void *func, char *value, uint line_num);
+void exec(void (*func)(stack_t **, uint), char *value, uint line_num);
 
 /* STACK FUNCS */
-void push(uint);
-void pop(uint);
-void show_stack(uint);
-uint is_stack_empty(uint);
-void show_top(uint);
-void free_stack();
+void push(stack_t **stack_h, unsigned int line);
+void pop(stack_t **stack_h, unsigned int line);
+unsigned int is_stack_empty(stack_t **stack_h, unsigned int line);
+void show_stack(stack_t **stack_h, unsigned int line);
+void free_stack(stack_t **stack_h);
+void show_top(stack_t *stack_h, unsigned int line);
 
 /* QUEUE FUNCS */
-void enqueue(uint);
-void dequeue(uint);
+void enqueue(stack_t **stack_h, uint line_num);
+void dequeue(stack_t **stack_h, uint line_num);
 
 /* ERRORS */
 void malloc_err();
 void usage_err();
 void open_err(char *filename);
 void invalid_op_err(uint line_num, char *opcode);
-
-/* INSTRUCTIONS */
 
 #endif
