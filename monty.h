@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define uint unsigned int
 
@@ -38,6 +39,12 @@ typedef struct instruction_s
 
 extern stack_t *stack_h;
 
+/* File Funcs */
+void read_file(char *filename);
+void parseline(char *linebuf, uint line_num);
+void run_instuction(char *opcode, char *value, uint line_num);
+void exec(void *func, char *value, uint line_num);
+
 /* STACK FUNCS */
 void push(stack_t **head, uint);
 void pop(stack_t **head, uint);
@@ -51,10 +58,9 @@ void enqueue(stack_t **head, uint);
 void dequeue(stack_t **head, uint);
 
 /* ERRORS */
-void malloc_err(stack_t **head);
+void malloc_err();
 void usage_err();
 void open_err(char *filename);
-void invalid_op_err(stack_t **head, uint line_num, char *opcode);
-void read_file(char *filename);
+void invalid_op_err(uint line_num, char *opcode);
 
 #endif

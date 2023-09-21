@@ -8,15 +8,15 @@
  *
  * Return: void
  */
-void malloc_err(stack_t **head)
+void malloc_err()
 {
-	free_stack(head);
+	free_stack(&stack_h);
 	fprintf(stderr, "Error: malloc failed\n");
 	exit(EXIT_FAILURE);
 }
 
 /**
- * usge_err - handles args errors
+ * usage_err - handles args errors
  *
  * Return: void
  */
@@ -48,10 +48,10 @@ void open_err(char *filename)
  *
  * Return: void
  */
-void invalid_op_err(stack_t **head, uint line_num, char *opcode)
+void invalid_op_err(uint line_num, char *opcode)
 {
 
-	free_stack(head);
+	free_stack(&stack_h);
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
 	exit(EXIT_FAILURE);
 }
