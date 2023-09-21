@@ -3,12 +3,11 @@
 
 /**
  * push - push new node
- * @stack_h: working stack node
+ * @head: working stack node
  * @line: unsigned value
  * return: void
  */
-void push(stack_t **stack_h, int digit,
-	  __attribute__((unused)) unsigned int line)
+void push(stack_t **head, int digit, __attribute__((unused)) unsigned int line)
 {
 
 	stack_t *tmp = malloc(sizeof(stack_t));
@@ -19,22 +18,22 @@ void push(stack_t **stack_h, int digit,
 	}
 
 	tmp->n = digit;
-	tmp->next = *stack_h;
+	tmp->next = *head;
 	tmp->prev = NULL;
-	*stack_h = tmp;
+	*head = tmp;
 }
 
 /**
  * pop - delete stack
- * @stack_h: working stack
+ * @head: working stack
  * @line: uint value
  *
  * return: void
  */
 
-void pop(stack_t **stack_h, __attribute__((unused)) unsigned int line)
+void pop(stack_t **head, __attribute__((unused)) unsigned int line)
 {
-	stack_t *ptr = *stack_h;
+	stack_t *ptr = *head;
 
 	if (!is_stack_empty(&ptr, line))
 		return;
@@ -46,30 +45,30 @@ void pop(stack_t **stack_h, __attribute__((unused)) unsigned int line)
 
 /**
  * is_stack_empty - checks if stack empty
- * @stack_h:the head of the node
+ * @head:the head of the node
  * @line: non-negative value
  * Return: 1 or 0
  */
 
-unsigned int is_stack_empty(stack_t **stack_h,
+unsigned int is_stack_empty(stack_t **head,
 			    __attribute__((unused)) unsigned int line)
 {
-	if (!*stack_h)
+	if (!*head)
 		return (0);
 	return (1);
 }
 
 /**
  * show_stack - prints out stack
- * @stack_h:stack head
+ * @head:stack head
  * @line:non-negative value
  *
  * return: void
  */
 
-void show_stack(stack_t **stack_h, __attribute__((unused)) unsigned int line)
+void show_stack(stack_t **head, __attribute__((unused)) unsigned int line)
 {
-	stack_t *tmp = *stack_h;
+	stack_t *tmp = *head;
 
 	while (tmp)
 	{
@@ -80,18 +79,18 @@ void show_stack(stack_t **stack_h, __attribute__((unused)) unsigned int line)
 
 /**
  * free_stack - free stack
- * @stack_h: head of a stack
+ * @head: head of a stack
  * return: void
  */
 
-void free_stack(stack_t **stack_h)
+void free_stack(stack_t **head)
 {
 	stack_t *list;
 
-	while (stack_h)
+	while (head)
 	{
-		list = *stack_h;
-		*stack_h = (*stack_h)->next;
+		list = *head;
+		*head = (*head)->next;
 		free(list);
 	}
 }

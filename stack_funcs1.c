@@ -2,13 +2,13 @@
 
 /**
  * show_top - print the top of the stack
- * @stack_h: head of the stack
+ * @head: head of the stack
  * @line: non-negative value
  *
  * return: void
  */
 
-void show_top(stack_t **stack_h, __attribute__((unused)) unsigned int line)
+void show_top(stack_t **head, __attribute__((unused)) unsigned int line)
 {
-	printf("%d\n", (*stack_h)->n);
+	printf("%d\n", (*head)->n);
 }
