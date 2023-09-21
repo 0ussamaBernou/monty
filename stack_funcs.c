@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdlib.h>
 
 /**
  * push - push new node
@@ -6,29 +7,24 @@
  * @line: unsigned value
  * return: void
  */
+<<<<<<< HEAD
 
 void push(uint line)
+=======
+void push(stack_t **stack_h, int digit,
+	  __attribute__((unused)) unsigned int line)
+>>>>>>> f4aca8110c2f4735b1aebc4645b09f91319c39b8
 {
-	unsigned int pos = 0;
-
-	char *tok = strtok(NULL, " ");
 
 	stack_t *tmp = malloc(sizeof(stack_t));
 
 	if (!tmp)
-		malloc_err();
-
-	while (pos < strlen(tok) || *tok == '\n')
 	{
-		if (!isdigit(tok[pos]))
-		{
-			fprintf(stderr, "L<line_number>: usage: push integer");
-			free(tmp);
-			exit(EXIT_FAILURE);
-		}
-		pos += 1;
+		free(tmp);
+		malloc_err();
 	}
-	tmp->n = atoi(tok);
+
+	tmp->n = digit;
 	tmp->next = *stack_h;
 	tmp->prev = NULL;
 	*stack_h = tmp;
@@ -42,7 +38,11 @@ void push(uint line)
  * return: void
  */
 
+<<<<<<< HEAD
 void pop(uint line)
+=======
+void pop(stack_t **stack_h, __attribute__((unused)) unsigned int line)
+>>>>>>> f4aca8110c2f4735b1aebc4645b09f91319c39b8
 {
 	stack_t *ptr = *stack_h;
 
@@ -64,7 +64,13 @@ void pop(uint line)
  * @line: non-negative value
  * Return: 1 or 0
  */
+<<<<<<< HEAD
 uint  is_stack_empty(unint line)
+=======
+
+unsigned int is_stack_empty(stack_t **stack_h,
+			    __attribute__((unused)) unsigned int line)
+>>>>>>> f4aca8110c2f4735b1aebc4645b09f91319c39b8
 {
 	if (!*stack_h)
 		return (0);
@@ -79,7 +85,7 @@ uint  is_stack_empty(unint line)
  * return: void
  */
 
-void show_stack(uint line)
+void show_stack(stack_t **stack_h, __attribute__((unused)) unsigned int line)
 {
 	stack_t *tmp = *stack_h;
 

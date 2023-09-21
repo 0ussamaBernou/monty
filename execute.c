@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <string.h>
 
 void run_instuction(char *opcode, char *value, uint line_num)
 {
@@ -16,17 +17,29 @@ void run_instuction(char *opcode, char *value, uint line_num)
 	{
 		if (strcmp(instructions[i].opcode, opcode) == 0)
 		{
-			exec(instructions[i].f, value, line_num);
+			exec(instructions[i].f, opcode, value, line_num);
 			return;
 		}
 	}
 
 	invalid_op_err(line_num, opcode);
 }
-void exec(void (*func)(stack_t **, uint), char *value, uint line_num)
+void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 {
 	int digit;
-	digit = atoi(value);
+
+	if (strcmp(op, "push") == 0)
+	{
+
+		if (!isdigit(value))
+		{
+			fprintf(stderr, "L%d: usage: push integer", line_num);
+			exit(EXIT_FAILURE);
+		}
+
+		digit = atoi(value);
+		push(&stack_h, digit, line_num);
+	}
 	func(&stack_h, line_num);
 	return;
 }
