@@ -5,8 +5,8 @@ void run_instuction(char *opcode, char *value, uint line_num)
 	uint i;
 
 	instruction_t instructions[] = {
-	    {"push", push},	{"pall", print_stack}, {"pint", print_top},
-	    {"pop", pop},	{"nop", nop},	       {"swap", swap_nodes},
+	    {"push", push},	{"pall", show_stack}, {"pint", show_top},
+	    {"pop", pop},	{"nop", nop},	      {"swap", swap_nodes},
 	    {"add", add_nodes}, {NULL, NULL}};
 
 	if (opcode[0] == '#')
