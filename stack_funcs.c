@@ -45,7 +45,11 @@ void pop(uint line)
 	stack_t *ptr = stack_h;
 
 	if (!is_stack_empty(line))
-		return;
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
+		free_stack();
+		exit(EXIT_FAILURE);
+	}
 
 	while (ptr->next)
 		ptr = ptr->next;
@@ -75,6 +79,13 @@ uint is_stack_empty(uint line)
 void show_stack(uint line)
 {
 	stack_t *tmp = stack_h;
+
+	if (!is_stack_empty(line))
+	{
+		free_stack();
+		fprintf(stderr, "L<line_number>: can't pint, stack empty");
+		exit(EXIT_FAILURE);
+	}
 
 	while (tmp)
 	{
