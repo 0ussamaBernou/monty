@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 <<<<<<< HEAD
 =======
@@ -52,12 +53,19 @@ typedef struct instruction_s
 
 extern stack_t *stack_h;
 
+/* File Funcs */
+void read_file(char *filename);
+void parseline(char *linebuf, uint line_num);
+void run_instuction(char *opcode, char *value, uint line_num);
+void exec(void *func, char *value, uint line_num);
+
 /* STACK FUNCS */
 void push(stack_t **head, uint);
 void pop(stack_t **head, uint);
 void show_stack(stack_t **head, uint);
 uint is_stack_empty(stack_t **head, uint);
 void show_top(stack_t **head, uint);
+void free_stack(stack_t **head);
 
 /* QUEUE FUNCS */
 void enqueue(stack_t **head, uint);
@@ -66,8 +74,8 @@ void dequeue(stack_t **head, uint);
 /* ERRORS */
 void malloc_err();
 void usage_err();
-void open_err();
-void invalid_op_err();
+void open_err(char *filename);
+void invalid_op_err(uint line_num, char *opcode);
 
 >>>>>>> e5221fee5d21afab3b1aa506b74ced0ea8287a09
 #endif
