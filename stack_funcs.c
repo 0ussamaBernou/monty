@@ -13,6 +13,7 @@ void push(uint line)
 	char *tok = strtok(NULL, " ");
 
 	stack_t *tmp = malloc(sizeof(stack_t));
+
 	if (!tmp)
 		malloc_err();
 
@@ -87,7 +88,7 @@ void show_stack(uint line)
  * return: void
  */
 
-void free_stack()
+void free_stack(void)
 {
 	stack_t *list;
 
