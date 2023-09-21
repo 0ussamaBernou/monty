@@ -7,7 +7,7 @@
  * return: void
  */
 
-void push(stack_t **stack_h, unsigned int line)
+void push(uint line)
 {
 	unsigned int pos = 0;
 
@@ -42,21 +42,16 @@ void push(stack_t **stack_h, unsigned int line)
  * return: void
  */
 
-void pop(stack_t **stack_h, unsigned int line)
+void pop(uint line)
 {
 	stack_t *ptr = *stack_h;
 
-<<<<<<< HEAD
 	if (!is_stack_empty(line))
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
-=======
-	if (!is_stack_empty(&ptr, line))
-		return;
->>>>>>> 91c85406a4478f15e51f0adbc6257632ebb5c852
 
 	while (ptr->next)
 		ptr = ptr->next;
@@ -69,8 +64,7 @@ void pop(stack_t **stack_h, unsigned int line)
  * @line: non-negative value
  * Return: 1 or 0
  */
-
-unsigned int is_stack_empty(stack_t **stack_h, unsigned int line)
+uint  is_stack_empty(unint line)
 {
 	if (!*stack_h)
 		return (0);
@@ -85,7 +79,7 @@ unsigned int is_stack_empty(stack_t **stack_h, unsigned int line)
  * return: void
  */
 
-void show_stack(stack_t **stack_h, unsigned int line)
+void show_stack(uint line)
 {
 	stack_t *tmp = *stack_h;
 
@@ -109,11 +103,7 @@ void show_stack(stack_t **stack_h, unsigned int line)
  * return: void
  */
 
-<<<<<<< HEAD
 void free_stack(void)
-=======
-void free_stack(stack_t **stack_h)
->>>>>>> 91c85406a4478f15e51f0adbc6257632ebb5c852
 {
 	stack_t *list;
 
