@@ -44,15 +44,17 @@ void pop(stack_t **head, uint);
 void show_stack(stack_t **head, uint);
 uint is_stack_empty(stack_t **head, uint);
 void show_top(stack_t **head, uint);
+void free_stack(stack_t **head);
 
 /* QUEUE FUNCS */
 void enqueue(stack_t **head, uint);
 void dequeue(stack_t **head, uint);
 
 /* ERRORS */
-void malloc_err();
+void malloc_err(stack_t **head);
 void usage_err();
-void open_err();
-void invalid_op_err();
+void open_err(char *filename);
+void invalid_op_err(stack_t **head, uint line_num, char *opcode);
+void read_file(char *filename);
 
 #endif
