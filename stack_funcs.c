@@ -10,7 +10,12 @@
 void push(stack_t **tmp, __attribute__((unused)) unsigned int line)
 {
 
-	(*tmp)->next = stack_h;
+	if (stack_h)
+		(*tmp)->next = stack_h;
+
+	else
+		(*tmp)->next = NULL;
+
 	(*tmp)->prev = NULL;
 	stack_h = *tmp;
 }
