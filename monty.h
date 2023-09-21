@@ -1,6 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#define _GNU_SOURCE
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -50,19 +51,19 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num);
 
 /* STACK FUNCS */
 
-void push(stack_t **stack_h, int digit, unsigned int line);
-void pop(stack_t **stack_h, unsigned int line);
-unsigned int is_stack_empty(stack_t **stack_h, unsigned int line);
-void show_stack(stack_t **stack_h, unsigned int line);
-void free_stack(stack_t **stack_h);
-void show_top(stack_t **stack_h, unsigned int line);
-void swap_nodes(stack_t **stack_h, unsigned int line);
-void add_nodes(stack_t **stack_h, unsigned int line);
-void nop(stack_t **stack_h, unsigned int line);
+void push(stack_t **head, unsigned int line);
+void pop(stack_t **head, unsigned int line);
+unsigned int is_stack_empty(stack_t **head, unsigned int line);
+void show_stack(stack_t **head, unsigned int line);
+void free_stack(stack_t **head);
+void show_top(stack_t **head, unsigned int line);
+void swap_nodes(stack_t **head, unsigned int line);
+void add_nodes(stack_t **head, unsigned int line);
+void nop(stack_t **head, unsigned int line);
 
 /* QUEUE FUNCS */
-void enqueue(stack_t **stack_h, uint line_num);
-void dequeue(stack_t **stack_h, uint line_num);
+void enqueue(stack_t **head, uint line_num);
+void dequeue(stack_t **head, uint line_num);
 
 /* ERRORS */
 void malloc_err();

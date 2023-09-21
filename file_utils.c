@@ -1,11 +1,10 @@
 #include "monty.h"
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 void read_file(char *filename)
 {
-	long nread;
+	ssize_t nread;
 	uint line_num;
 	size_t len = 0;
 	char *linebuf = NULL;
@@ -14,9 +13,11 @@ void read_file(char *filename)
 	if (!fd || !filename)
 		open_err(filename);
 
-	for (line_num = 1; (nread = getline(&linebuf, &len, fd) != -1);
-	     line_num++)
+	nread = getline(&linebuf, &len, fd);
+	for (line_num = 1; nread != -1; line_num++)
 	{
+
+		nread = getline(&linebuf, &len, fd);
 		parseline(linebuf, line_num);
 	}
 

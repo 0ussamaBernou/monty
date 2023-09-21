@@ -5,10 +5,14 @@ void run_instuction(char *opcode, char *value, uint line_num)
 {
 	uint i;
 
-	instruction_t instructions[] = {
-	    {"push", push},	{"pall", show_stack}, {"pint", show_top},
-	    {"pop", pop},	{"nop", nop},	      {"swap", swap_nodes},
-	    {"add", add_nodes}, {NULL, NULL}};
+	instruction_t instructions[] = {{"push", push},
+					{"pall", show_stack},
+					{"pint", show_top},
+					{"pop", pop},
+					/*{"nop", nop},*/
+					/*{"swap", swap_nodes},*/
+					/*{"add", add_nodes},*/
+					{NULL, NULL}};
 
 	if (opcode[0] == '#')
 		return;
@@ -26,10 +30,12 @@ void run_instuction(char *opcode, char *value, uint line_num)
 }
 void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 {
-	int digit;
+	stack_t *tmp;
 
 	if (strcmp(op, "push") == 0)
 	{
+
+		int digit;
 
 		if (!isdigit(value))
 		{
@@ -38,7 +44,16 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 		}
 
 		digit = atoi(value);
-		push(&stack_h, digit, line_num);
+
+		tmp = malloc(sizeof(stack_t));
+		if (!tmp)
+		{
+			free(tmp);
+			malloc_err();
+		}
+
+		tmp->n = digit;
+		push(&tmp, line_num);
 	}
 	func(&stack_h, line_num);
 	return;
