@@ -5,8 +5,8 @@ void run_instuction(char *opcode, char *value, uint line_num)
 	uint i;
 
 	instruction_t instructions[] = {
-	    {"push", push},	{"pall", print_stack}, {"pint", print_top},
-	    {"pop", pop},	{"nop", nop},	       {"swap", swap_nodes},
+	    {"push", push},	{"pall", show_stack}, {"pint", show_top},
+	    {"pop", pop},	{"nop", nop},	      {"swap", swap_nodes},
 	    {"add", add_nodes}, {NULL, NULL}};
 
 	if (opcode[0] == '#')
@@ -23,4 +23,10 @@ void run_instuction(char *opcode, char *value, uint line_num)
 
 	invalid_op_err(line_num, opcode);
 }
-void exec(void *func, char *value, uint line_num) { return; }
+void exec(void (*func)(stack_t **, uint), char *value, uint line_num)
+{
+	int digit;
+	digit = atoi(value);
+	func(&stack_h, line_num);
+	return;
+}

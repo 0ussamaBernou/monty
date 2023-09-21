@@ -11,6 +11,5 @@ int main(int argc, char *argv[])
 	filename = argv[1];
 	read_file(filename);
 
-	/* tokenize each line */
-	/* parse the tokens */
+	return (EXIT_SUCCESS);
 }
