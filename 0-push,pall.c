@@ -39,4 +39,18 @@ void push( stack_t **stack, unsigned int line_number)
 	*stack = new_st;
 }
 
+/**
+ * pall - this function prints all the int in nodes
+ * @stack_t: this is the working stack node
+ * return: return void
+ */
 
+void pall(stack_t **stack)
+{
+	stack_t h = *stack;
+	while (h != NULL)
+	{
+		printf("%d\n", h->n);
+		h = h->next;
+	}
+}
