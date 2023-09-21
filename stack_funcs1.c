@@ -8,7 +8,7 @@
  * return: void
  */
 
-void show_top(stack_t *stack_h, unsigned int line)
+void show_top(stack_t **stack_h, __attribute__((unused)) unsigned int line)
 {
-	printf("%d\n", stack_h->n);
+	printf("%d\n", (*stack_h)->n);
 }

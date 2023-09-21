@@ -46,18 +46,19 @@ void parseline(char *linebuf, uint line_num);
 
 /* Interpreting Funcs */
 void run_instuction(char *opcode, char *value, uint line_num);
-void exec(void (*func)(stack_t **, uint), char *value, uint line_num);
+void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num);
 
 /* STACK FUNCS */
-void push(stack_t **stack_h, unsigned int line);
+
+void push(stack_t **stack_h, int digit, unsigned int line);
 void pop(stack_t **stack_h, unsigned int line);
 unsigned int is_stack_empty(stack_t **stack_h, unsigned int line);
 void show_stack(stack_t **stack_h, unsigned int line);
 void free_stack(stack_t **stack_h);
-void show_top(stack_t *stack_h, unsigned int line);
-void swap_nodes(stack_t *stack_h, unsigned int line);
-void add_nodes(stack_t *stack_h, unsigned int line);
-void nop(stack_t *stack_h, unsigned int line);
+void show_top(stack_t **stack_h, unsigned int line);
+void swap_nodes(stack_t **stack_h, unsigned int line);
+void add_nodes(stack_t **stack_h, unsigned int line);
+void nop(stack_t **stack_h, unsigned int line);
 
 /* QUEUE FUNCS */
 void enqueue(stack_t **stack_h, uint line_num);
