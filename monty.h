@@ -49,4 +49,10 @@ void show_top(stack_t **head, uint);
 void enqueue(stack_t **head, uint);
 void dequeue(stack_t **head, uint);
 
+/* ERRORS */
+void malloc_err();
+void usage_err();
+void open_err();
+void invalid_op_err();
+
 #endif
