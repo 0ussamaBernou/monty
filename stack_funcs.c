@@ -84,7 +84,7 @@ void free_stack(stack_t **head)
 {
 	stack_t *list;
 
-	while (head)
+	while (*head)
 	{
 		list = *head;
 		*head = (*head)->next;

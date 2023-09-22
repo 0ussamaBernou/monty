@@ -30,17 +30,27 @@ void run_instuction(char *opcode, char *value, uint line_num)
 }
 void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 {
+	int digit, i;
+
 	stack_t *tmp;
 
-	if (strcmp(op, "push") == 0)
+	if (strcmp("push", op) == 0)
 	{
-
-		int digit;
-
-		if (!isdigit(value))
+		if (value == NULL)
 		{
 			fprintf(stderr, "L%d: usage: push integer", line_num);
 			exit(EXIT_FAILURE);
+		}
+
+		for (i = 0; value[i] != '\0'; i++)
+		{
+			if (isdigit(value[i]) == 0)
+			{
+				free_stack(&stack_h);
+				fprintf(stderr, "L%d: usage: push integer",
+					line_num);
+				exit(EXIT_FAILURE);
+			}
 		}
 
 		digit = atoi(value);
