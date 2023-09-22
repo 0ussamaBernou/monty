@@ -40,7 +40,7 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 		{
 
 			free_stack(&stack_h);
-			fprintf(stderr, "L%d: usage: push integer", line_num);
+			fprintf(stderr, "L%d: usage: push integer\n", line_num);
 			exit(EXIT_FAILURE);
 		}
 
@@ -49,7 +49,7 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 			if (isdigit(value[i]) == 0)
 			{
 				free_stack(&stack_h);
-				fprintf(stderr, "L%d: usage: push integer",
+				fprintf(stderr, "L%d: usage: push integer\n",
 					line_num);
 				exit(EXIT_FAILURE);
 			}

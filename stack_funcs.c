@@ -7,20 +7,21 @@
  * @line: unsigned value
  * return: void
  */
-void push(stack_t **tmp, __attribute__((unused)) unsigned int line)
+void push(stack_t **new, __attribute__((unused)) unsigned int line)
 {
+	stack_t *tmp;
 
 	if (stack_h)
 	{
-
-		(*tmp)->next = stack_h;
-		(*tmp)->prev = NULL;
-		stack_h = *tmp;
+		tmp = stack_h;
+		stack_h = *new;
+		stack_h->next = tmp;
+		tmp->prev = stack_h;
 	}
 
 	else
 	{
-		stack_h = *tmp;
+		stack_h = *new;
 		return;
 	}
 }
