@@ -7,24 +7,6 @@
  * @line: unsigned value
  * return: void
  */
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-void push(uint line)
-=======
-void push(stack_t **stack_h, int digit,
-	  __attribute__((unused)) unsigned int line)
->>>>>>> f4aca8110c2f4735b1aebc4645b09f91319c39b8
-{
-
-	stack_t *tmp = malloc(sizeof(stack_t));
-
-	if (!tmp)
-	{
-		free(tmp);
-		malloc_err();
-	}
-=======
 void push(stack_t **tmp, __attribute__((unused)) unsigned int line)
 {
 
@@ -33,7 +15,6 @@ void push(stack_t **tmp, __attribute__((unused)) unsigned int line)
 
 	else
 		(*tmp)->next = NULL;
->>>>>>> 17c0f9a415e5c66e3a2845273241f15f523aeca6
 
 	(*tmp)->prev = NULL;
 	stack_h = *tmp;
@@ -47,22 +28,14 @@ void push(stack_t **tmp, __attribute__((unused)) unsigned int line)
  * return: void
  */
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-void pop(uint line)
-=======
-void pop(stack_t **stack_h, __attribute__((unused)) unsigned int line)
->>>>>>> f4aca8110c2f4735b1aebc4645b09f91319c39b8
-=======
 void pop(stack_t **head, __attribute__((unused)) unsigned int line)
->>>>>>> 17c0f9a415e5c66e3a2845273241f15f523aeca6
 {
 	stack_t *ptr = *head;
 
-	if (!is_stack_empty(line))
+	if (!is_stack_empty(head, line))
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
-		free_stack();
+		free_stack(head);
 		exit(EXIT_FAILURE);
 	}
 
@@ -77,13 +50,9 @@ void pop(stack_t **head, __attribute__((unused)) unsigned int line)
  * @line: non-negative value
  * Return: 1 or 0
  */
-<<<<<<< HEAD
-uint  is_stack_empty(unint line)
-=======
 
 unsigned int is_stack_empty(stack_t **head,
 			    __attribute__((unused)) unsigned int line)
->>>>>>> f4aca8110c2f4735b1aebc4645b09f91319c39b8
 {
 	if (!*head)
 		return (0);
@@ -102,9 +71,9 @@ void show_stack(stack_t **head, __attribute__((unused)) unsigned int line)
 {
 	stack_t *tmp = *head;
 
-	if (!is_stack_empty(line))
+	if (!is_stack_empty(head, line))
 	{
-		free_stack();
+		free_stack(head);
 		fprintf(stderr, "L<line_number>: can't pint, stack empty");
 		exit(EXIT_FAILURE);
 	}
@@ -122,11 +91,7 @@ void show_stack(stack_t **head, __attribute__((unused)) unsigned int line)
  * return: void
  */
 
-<<<<<<< HEAD
-void free_stack(void)
-=======
 void free_stack(stack_t **head)
->>>>>>> 17c0f9a415e5c66e3a2845273241f15f523aeca6
 {
 	stack_t *list;
 
