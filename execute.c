@@ -38,6 +38,8 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 	{
 		if (value == NULL)
 		{
+
+			free_stack(&stack_h);
 			fprintf(stderr, "L%d: usage: push integer", line_num);
 			exit(EXIT_FAILURE);
 		}

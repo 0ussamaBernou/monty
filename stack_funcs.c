@@ -11,13 +11,18 @@ void push(stack_t **tmp, __attribute__((unused)) unsigned int line)
 {
 
 	if (stack_h)
+	{
+
 		(*tmp)->next = stack_h;
+		(*tmp)->prev = NULL;
+		stack_h = *tmp;
+	}
 
 	else
-		(*tmp)->next = NULL;
-
-	(*tmp)->prev = NULL;
-	stack_h = *tmp;
+	{
+		stack_h = *tmp;
+		return;
+	}
 }
 
 /**
@@ -67,17 +72,18 @@ unsigned int is_stack_empty(stack_t **head,
  * return: void
  */
 
-void show_stack(stack_t **head, __attribute__((unused)) unsigned int line)
+void show_stack(stack_t **head, unsigned int line)
 {
-	stack_t *tmp = *head;
+	stack_t *tmp;
 
 	if (!is_stack_empty(head, line))
 	{
 		free_stack(head);
-		fprintf(stderr, "L<line_number>: can't pint, stack empty");
+		fprintf(stderr, "L%d: can't pint, stack empty", line);
 		exit(EXIT_FAILURE);
 	}
 
+	tmp = *head;
 	while (tmp)
 	{
 		printf("%d\n", tmp->n);
