@@ -57,7 +57,6 @@ void pop(stack_t **head, __attribute__((unused)) unsigned int line)
  * @line: non-negative value
  * Return: 1 or 0
  */
-
 unsigned int is_stack_empty(stack_t **head,
 			    __attribute__((unused)) unsigned int line)
 {
@@ -89,9 +88,15 @@ void show_stack(stack_t **head, unsigned int line)
 	tmp = *head;
 	while (tmp)
 	{
-		printf("%d\n", tmp->n);
 		tmp = tmp->next;
 	}
+
+	while (tmp->prev)
+	{
+		tmp = tmp->prev;
+		printf("%d\n", tmp->n);
+	}
+	printf("%d\n", tmp->n);
 }
 
 /**
