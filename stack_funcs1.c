@@ -64,6 +64,7 @@ void add(stack_t **head, unsigned int line)
 void nop(__attribute__((unused)) stack_t **head,
 	 __attribute__((unused)) unsigned int line)
 {
+	return;
 }
 
 /**
