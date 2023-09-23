@@ -1,5 +1,6 @@
 #include "monty.h"
 #include <ctype.h>
+#include <stdio.h>
 #include <string.h>
 
 void run_instuction(char *opcode, char *value, uint line_num)
@@ -53,7 +54,8 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 			exit(EXIT_FAILURE);
 		}
 
-		if (isdigit(value[0]) != 0 || value[0] != '-')
+		if ((isdigit(value[0]) == 0) && value[0] != '-' &&
+		    value[0] != '\0')
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_num);
 			free_stack();
