@@ -78,11 +78,9 @@ void show_stack(stack_t **head, unsigned int line)
 {
 	stack_t *tmp;
 
-	if (!is_stack_empty(head, line))
+	if (is_stack_empty(head, line) == 0)
 	{
-		/*free_stack();
-		fprintf(stderr, "L%d: can't pint, stack empty", line);
-		exit(EXIT_FAILURE);*/
+		return;
 	}
 
 	tmp = *head;

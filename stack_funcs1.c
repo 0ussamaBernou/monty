@@ -15,7 +15,8 @@ void show_top(stack_t **head, __attribute__((unused)) unsigned int line)
 
 void swap_nodes(stack_t **head, unsigned int line)
 {
-	stack_t *ptr;
+	stack_t *ptr = *head;
+	int n;
 
 	if (!*head || !(**head).next)
 	{
@@ -24,12 +25,9 @@ void swap_nodes(stack_t **head, unsigned int line)
 		exit(EXIT_FAILURE);
 	}
 
-	ptr = (*head)->next;
-	(*head)->next = ptr->next;
-	(*head)->prev = ptr;
-	ptr->next = *head;
-	ptr->prev = NULL;
-	(*head) = ptr;
+	n = ptr->n;
+	ptr->n = ptr->next->n;
+	ptr->next->n = n;
 }
 
 /**
