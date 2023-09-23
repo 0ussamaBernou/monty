@@ -28,7 +28,7 @@ void push(stack_t **new, __attribute__((unused)) unsigned int line)
 }
 
 /**
- * pop - delete stack
+ * pop - remove top element of the stack
  * @head: working stack
  * @line: uint value
  *
@@ -39,16 +39,16 @@ void pop(stack_t **head, __attribute__((unused)) unsigned int line)
 {
 	stack_t *ptr = *head;
 
-	if (!is_stack_empty(head, line))
+	if (is_stack_empty(head, line) == 0)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
 		free_stack();
 		exit(EXIT_FAILURE);
 	}
 
-	while (ptr->next)
-		ptr = ptr->next;
-	ptr->prev->next = NULL;
+	*head = (*head)->next;
+	(*head)->prev = NULL;
+	free(ptr);
 }
 
 /**
@@ -98,6 +98,7 @@ void show_stack(stack_t **head, unsigned int line)
  * @head: head of a stack
  * return: void
  */
+
 void free_stack()
 {
 	stack_t *list;

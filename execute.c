@@ -7,14 +7,9 @@ void run_instuction(char *opcode, char *value, uint line_num)
 {
 	uint i;
 
-	instruction_t instructions[] = {{"push", push},
-					{"pall", show_stack},
-					{"pint", pint},
-					{"pop", pop},
-					/*{"nop", nop},*/
-					/*{"swap", swap_nodes},*/
-					/*{"add", add_nodes},*/
-					{NULL, NULL}};
+	instruction_t instructions[] = {
+	    {"push", push}, {"pall", show_stack}, {"pint", pint}, {"pop", pop},
+	    {"nop", nop},   {"swap", swap_nodes}, {"add", add},	  {NULL, NULL}};
 
 	if (opcode)
 	{
