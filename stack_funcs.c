@@ -88,15 +88,9 @@ void show_stack(stack_t **head, unsigned int line)
 	tmp = *head;
 	while (tmp)
 	{
+		printf("%d\n", tmp->n);
 		tmp = tmp->next;
 	}
-
-	while (tmp->prev)
-	{
-		tmp = tmp->prev;
-		printf("%d\n", tmp->n);
-	}
-	printf("%d\n", tmp->n);
 }
 
 /**
