@@ -10,7 +10,7 @@
  */
 void malloc_err()
 {
-	free_stack(&stack_h);
+	free_stack();
 	fprintf(stderr, "Error: malloc failed\n");
 	exit(EXIT_FAILURE);
 }
@@ -51,7 +51,7 @@ void open_err(char *filename)
 void invalid_op_err(uint line_num, char *opcode)
 {
 
-	free_stack(&stack_h);
+	free_stack();
 	fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
 	exit(EXIT_FAILURE);
 }

@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 	/* read the file in the args */
 	filename = argv[1];
 	read_file(filename);
+	free_stack();
 
 	return (EXIT_SUCCESS);
 }

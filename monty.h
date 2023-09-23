@@ -55,7 +55,7 @@ void push(stack_t **head, unsigned int line);
 void pop(stack_t **head, unsigned int line);
 unsigned int is_stack_empty(stack_t **head, unsigned int line);
 void show_stack(stack_t **head, unsigned int line);
-void free_stack(stack_t **head);
+void free_stack();
 void show_top(stack_t **head, unsigned int line);
 void swap_nodes(stack_t **head, unsigned int line);
 void add_nodes(stack_t **head, unsigned int line);

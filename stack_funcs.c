@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
@@ -17,11 +18,15 @@ void push(stack_t **new, __attribute__((unused)) unsigned int line)
 		stack_h = *new;
 		stack_h->next = tmp;
 		tmp->prev = stack_h;
+
+		printf("pushing %d ...\n", stack_h->n);
 	}
 
 	else
 	{
 		stack_h = *new;
+
+		printf("pushing %d ...\n", (stack_h)->n);
 		return;
 	}
 }
@@ -41,7 +46,7 @@ void pop(stack_t **head, __attribute__((unused)) unsigned int line)
 	if (!is_stack_empty(head, line))
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
-		free_stack(head);
+		free_stack();
 		exit(EXIT_FAILURE);
 	}
 
@@ -62,6 +67,7 @@ unsigned int is_stack_empty(stack_t **head,
 {
 	if (!*head)
 		return (0);
+
 	return (1);
 }
 
@@ -79,7 +85,7 @@ void show_stack(stack_t **head, unsigned int line)
 
 	if (!is_stack_empty(head, line))
 	{
-		free_stack(head);
+		free_stack();
 		fprintf(stderr, "L%d: can't pint, stack empty", line);
 		exit(EXIT_FAILURE);
 	}
@@ -97,15 +103,17 @@ void show_stack(stack_t **head, unsigned int line)
  * @head: head of a stack
  * return: void
  */
-
-void free_stack(stack_t **head)
+void free_stack()
 {
 	stack_t *list;
 
-	while (*head)
+	if (!stack_h)
+		return;
+
+	while (stack_h)
 	{
-		list = *head;
-		*head = (*head)->next;
+		list = stack_h;
+		stack_h = stack_h->next;
 		free(list);
 	}
 }

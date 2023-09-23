@@ -39,8 +39,8 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 		if (value == NULL)
 		{
 
-			free_stack(&stack_h);
 			fprintf(stderr, "L%d: usage: push integer\n", line_num);
+			free_stack();
 			exit(EXIT_FAILURE);
 		}
 
@@ -48,9 +48,9 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 		{
 			if (isdigit(value[i]) == 0)
 			{
-				free_stack(&stack_h);
 				fprintf(stderr, "L%d: usage: push integer\n",
 					line_num);
+				free_stack();
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -64,6 +64,8 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 			malloc_err();
 		}
 
+		tmp->prev = NULL;
+		tmp->next = NULL;
 		tmp->n = digit;
 		push(&tmp, line_num);
 	}
