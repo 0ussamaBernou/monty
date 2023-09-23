@@ -1,6 +1,8 @@
 #include "monty.h"
 #include <string.h>
 
+int digit = 0;
+
 void run_instuction(char *opcode, char *value, uint line_num)
 {
 	uint i;
@@ -14,6 +16,7 @@ void run_instuction(char *opcode, char *value, uint line_num)
 					/*{"add", add_nodes},*/
 					{NULL, NULL}};
 
+	printf("Running instruction: %s, Value: %s\n", opcode, value);
 	if (opcode[0] == '#')
 		return;
 
@@ -30,8 +33,7 @@ void run_instuction(char *opcode, char *value, uint line_num)
 }
 void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 {
-	int digit, i;
-
+	int i;
 	stack_t *tmp;
 
 	if (strcmp("push", op) == 0)
@@ -69,6 +71,10 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 		tmp->n = digit;
 		push(&tmp, line_num);
 	}
-	func(&stack_h, line_num);
+	else
+	{
+		func(&stack_h, line_num);
+	}
+	show_stack(&stack_h, line_num);
 	return;
 }

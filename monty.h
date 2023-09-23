@@ -40,6 +40,7 @@ typedef struct instruction_s
 } instruction_t;
 
 extern stack_t *stack_h;
+extern int digit;
 
 /* File Funcs */
 void read_file(char *filename);
@@ -70,5 +71,7 @@ void malloc_err();
 void usage_err();
 void open_err(char *filename);
 void invalid_op_err(uint line_num, char *opcode);
+
+char *removeTrailingNewline(char *str);
 
 #endif

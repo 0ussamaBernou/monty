@@ -10,25 +10,17 @@
  */
 void push(stack_t **new, __attribute__((unused)) unsigned int line)
 {
-	stack_t *tmp;
+	printf("Pushing value: %i\n", (*new)->n);
 
 	if (stack_h)
 	{
-		tmp = stack_h;
-		stack_h = *new;
-		stack_h->next = tmp;
-		tmp->prev = stack_h;
+		/* new next point to head  (new -> head) */
+		(*new)->next = (stack_h);
 
-		printf("pushing %d ...\n", stack_h->n);
+		/* head prev points to new (new <- head) */
+		(stack_h)->prev = (*new);
 	}
-
-	else
-	{
-		stack_h = *new;
-
-		printf("pushing %d ...\n", (stack_h)->n);
-		return;
-	}
+	(stack_h) = (*new);
 }
 
 /**
@@ -39,21 +31,7 @@ void push(stack_t **new, __attribute__((unused)) unsigned int line)
  * return: void
  */
 
-void pop(stack_t **head, __attribute__((unused)) unsigned int line)
-{
-	stack_t *ptr = *head;
-
-	if (!is_stack_empty(head, line))
-	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line);
-		free_stack();
-		exit(EXIT_FAILURE);
-	}
-
-	while (ptr->next)
-		ptr = ptr->next;
-	ptr->prev->next = NULL;
-}
+void pop(stack_t **head, __attribute__((unused)) unsigned int line) {}
 
 /**
  * is_stack_empty - checks if stack empty
@@ -65,10 +43,7 @@ void pop(stack_t **head, __attribute__((unused)) unsigned int line)
 unsigned int is_stack_empty(stack_t **head,
 			    __attribute__((unused)) unsigned int line)
 {
-	if (!*head)
-		return (0);
-
-	return (1);
+	return 0;
 }
 
 /**
@@ -81,21 +56,18 @@ unsigned int is_stack_empty(stack_t **head,
 
 void show_stack(stack_t **head, unsigned int line)
 {
-	stack_t *tmp;
 
-	if (!is_stack_empty(head, line))
-	{
-		free_stack();
-		fprintf(stderr, "L%d: can't pint, stack empty", line);
-		exit(EXIT_FAILURE);
-	}
+	stack_t *h = *head;
 
-	tmp = *head;
-	while (tmp)
+	if (!h)
+		return;
+
+	while (h)
 	{
-		printf("%d\n", tmp->n);
-		tmp = tmp->next;
+		printf("->%i", h->n);
+		h = h->next;
 	}
+	printf("\n");
 }
 
 /**
@@ -105,15 +77,12 @@ void show_stack(stack_t **head, unsigned int line)
  */
 void free_stack()
 {
-	stack_t *list;
-
-	if (!stack_h)
-		return;
+	stack_t *tmp;
 
 	while (stack_h)
 	{
-		list = stack_h;
+		tmp = stack_h;
 		stack_h = stack_h->next;
-		free(list);
+		free(tmp);
 	}
 }
