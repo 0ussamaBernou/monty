@@ -14,16 +14,25 @@ void run_instuction(char *opcode, char *value, uint line_num)
 					/*{"add", add_nodes},*/
 					{NULL, NULL}};
 
-	if (opcode[0] == '#')
-		return;
-
-	for (i = 0; instructions[i].opcode != NULL; i++)
+	if (opcode)
 	{
-		if (strcmp(instructions[i].opcode, opcode) == 0)
-		{
-			exec(instructions[i].f, opcode, value, line_num);
+
+		if (opcode[0] == '#')
 			return;
+
+		for (i = 0; instructions[i].opcode != NULL; i++)
+		{
+			if (strcmp(instructions[i].opcode, opcode) == 0)
+			{
+				exec(instructions[i].f, opcode, value,
+				     line_num);
+				return;
+			}
 		}
+	}
+	else
+	{
+		return;
 	}
 
 	invalid_op_err(line_num, opcode);
