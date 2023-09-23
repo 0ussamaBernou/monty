@@ -18,15 +18,11 @@ void push(stack_t **new, __attribute__((unused)) unsigned int line)
 		stack_h = *new;
 		stack_h->next = tmp;
 		tmp->prev = stack_h;
-
-		printf("pushing %d ...\n", stack_h->n);
 	}
 
 	else
 	{
 		stack_h = *new;
-
-		printf("pushing %d ...\n", (stack_h)->n);
 		return;
 	}
 }
