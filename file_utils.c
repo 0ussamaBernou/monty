@@ -16,9 +16,9 @@ void read_file(char *filename)
 	nread = getline(&linebuf, &len, fd);
 	for (line_num = 1; nread != -1; line_num++)
 	{
-
-		nread = getline(&linebuf, &len, fd);
+		linebuf[nread - 1] = '\0';
 		parseline(linebuf, line_num);
+		nread = getline(&linebuf, &len, fd);
 	}
 
 	free(linebuf);
@@ -26,7 +26,7 @@ void read_file(char *filename)
 
 void parseline(char *linebuf, uint line_num)
 {
-	const char *delim = "\n ";
+	const char *delim = " ";
 	char *opcode;
 	char *value;
 

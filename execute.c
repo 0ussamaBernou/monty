@@ -69,6 +69,9 @@ void exec(void (*func)(stack_t **, uint), char *op, char *value, uint line_num)
 		tmp->n = digit;
 		push(&tmp, line_num);
 	}
-	func(&stack_h, line_num);
+	else
+	{
+		func(&stack_h, line_num);
+	}
 	return;
 }
