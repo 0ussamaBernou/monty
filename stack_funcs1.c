@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 /**
  * show_top - print the top of the stack
@@ -61,3 +62,25 @@ void add(stack_t **head, unsigned int line)
  */
 
 /* void nop(stack_t **head, unsigned int line) {}*/
+
+/**
+ * pint  - print element top of the stack
+ * @head: head of the stack
+ * @line: line number
+ *
+ * Return: void
+ */
+void pint(stack_t **head, uint line)
+{
+
+	if (!is_stack_empty(head, line))
+	{
+		free_stack();
+		fprintf(stderr, "L%d: can't pint, stack empty", line);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		printf("%d", (*head)->n);
+	}
+}
