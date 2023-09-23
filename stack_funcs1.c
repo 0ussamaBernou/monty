@@ -73,10 +73,10 @@ void add(stack_t **head, unsigned int line)
 void pint(stack_t **head, uint line)
 {
 
-	if (!is_stack_empty(head, line))
+	if (is_stack_empty(head, line) == 0)
 	{
 		free_stack();
-		fprintf(stderr, "L%d: can't pint, stack empty", line);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line);
 		exit(EXIT_FAILURE);
 	}
 	else

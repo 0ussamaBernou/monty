@@ -9,7 +9,7 @@ void run_instuction(char *opcode, char *value, uint line_num)
 
 	instruction_t instructions[] = {{"push", push},
 					{"pall", show_stack},
-					{"pint", show_top},
+					{"pint", pint},
 					{"pop", pop},
 					/*{"nop", nop},*/
 					/*{"swap", swap_nodes},*/
